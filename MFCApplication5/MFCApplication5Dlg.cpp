@@ -97,15 +97,29 @@ int DisplayResourceNAMessageBox()
 
 	switch (msgboxID)
 	{
-		case IDCANCEL:
-			// TODO: add code
-			break;
-		case IDTRYAGAIN:
-			// TODO: add code
-			break;
-		case IDCONTINUE:
-			// TODO: add code
-			break;
+	case IDCANCEL:
+		MessageBox(
+			NULL,
+			(LPCWSTR)L"You pressed cancel button",
+			(LPCWSTR)L"Notice",
+			MB_OK);
+
+		break;
+	case IDTRYAGAIN:
+		MessageBox(
+			NULL,
+			(LPCWSTR)L"You pressed try again button",
+			(LPCWSTR)L"Notice",
+			MB_OK);
+
+		break;
+	case IDCONTINUE:
+		MessageBox(
+			NULL,
+			(LPCWSTR)L"You pressed continue button",
+			(LPCWSTR)L"Notice",
+			MB_OK);
+		break;
 	}
 
 	return msgboxID;
@@ -117,5 +131,6 @@ void CMFCApplication5Dlg::OnBnClickedOk()
 	// TODO: Add your control notification handler code here
 	CDialogEx::OnOK();
 
+	// Display message box
 	DisplayResourceNAMessageBox();
 }
