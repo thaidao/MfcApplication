@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication5Dlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CMFCApplication5Dlg::OnBnClickedOk)
+	ON_EN_CHANGE(IDC_EDIT1, &CMFCApplication5Dlg::OnEnChangeEdit1)
 END_MESSAGE_MAP()
 
 
@@ -86,7 +87,7 @@ HCURSOR CMFCApplication5Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-int DisplayResourceNAMessageBox()
+int DisplayResourceNAMessageBox(CString MsgContent)
 {
 	int msgboxID = MessageBox(
 		NULL,
@@ -114,11 +115,20 @@ int DisplayResourceNAMessageBox()
 
 		break;
 	case IDCONTINUE:
-		MessageBox(
+		int MsgID = MessageBox(
 			NULL,
 			(LPCWSTR)L"You pressed continue button",
 			(LPCWSTR)L"Notice",
 			MB_OK);
+
+		if (MsgContent.GetLength() != 0 && MsgID	== IDOK)
+		{
+			MessageBox(
+				NULL,
+				(LPCWSTR) MsgContent,
+				(LPCWSTR)L"Editbox's content",
+				MB_OK);
+		}
 		break;
 	}
 
@@ -128,9 +138,23 @@ int DisplayResourceNAMessageBox()
 
 void CMFCApplication5Dlg::OnBnClickedOk()
 {
+	CString StrTmp;
 	// TODO: Add your control notification handler code here
 	CDialogEx::OnOK();
 
+	GetDlgItemText(IDC_EDIT1, StrTmp);
+
 	// Display message box
-	DisplayResourceNAMessageBox();
+	DisplayResourceNAMessageBox(StrTmp);
+}
+
+
+void CMFCApplication5Dlg::OnEnChangeEdit1()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
 }
