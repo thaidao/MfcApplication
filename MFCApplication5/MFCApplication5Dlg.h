@@ -31,4 +31,6 @@ protected:
 public:
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnEnChangeEdit1();
+
+	bool sum(int *pNumA, int *pNumB, int *pSum);
 };

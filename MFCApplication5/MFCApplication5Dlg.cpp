@@ -158,3 +158,12 @@ void CMFCApplication5Dlg::OnEnChangeEdit1()
 
 	// TODO:  Add your control notification handler code here
 }
+
+bool sum(int *pNumA, int *pNumB, int *pSum)
+{
+	if (pNumA == NULL || pNumB == NULL || pSum == NULL)
+		return false;
+
+	*pSum = *pNumA + *pNumB;
+	return true;
+}
